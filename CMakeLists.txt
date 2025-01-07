@@ -53,7 +53,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
  add_message_files(
    FILES
-   RobotState.msg
+   PositionVelocity.msg
 #   Message2.msg
 )
 
@@ -141,10 +141,11 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 #add_executable(${PROJECT_NAME}_node src/my_assignment2_node.cpp)
 
-#add_executable(target_service_node src/target_service_node.cpp)
-#add_executable(my_action_client_node src/my_action_client_node.cpp)
+add_executable(target_service_node src/target_service_node.cpp)
+add_executable(action_client_node src/action_client_node.cpp)
 
 ## Rename C++ executable without prefix
+
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
@@ -152,16 +153,17 @@ include_directories(
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(target_service_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(action_client_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-#target_link_libraries(target_service_node
-#  ${catkin_LIBRARIES}
-#)
+target_link_libraries(target_service_node
+  ${catkin_LIBRARIES}
+)
 
-#target_link_libraries(my_action_client_node
-#  ${catkin_LIBRARIES}
-#)
+target_link_libraries(action_client_node
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
@@ -182,6 +184,10 @@ include_directories(
 # install(TARGETS ${PROJECT_NAME}_node
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
+
+install(TARGETS target_service_node action_client_node
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark libraries for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html

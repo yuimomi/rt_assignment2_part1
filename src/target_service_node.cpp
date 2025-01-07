@@ -1,4 +1,6 @@
 #include <ros/ros.h>
+#include <std_msgs/String.h>
+#include <geometry_msgs/Point.h> 
 #include "my_assignment2/LastTarget.h"
 
 double last_x = 0.0;
@@ -26,8 +28,9 @@ int main(int argc, char **argv)
 
   ros::ServiceServer service = nh.advertiseService("get_last_target", getLastTarget);
 
-  ros::Subscriber sub = nh.subscribe("/last_target_topic", 10, targetCallback);
+  ros::Subscriber sub = nh.subscribe("/last_target_topic", 1000, targetCallback);
 
+  ROS_INFO("LastTargetService is ready.");
   ros::spin();
   return 0;
 }
