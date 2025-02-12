@@ -9,16 +9,18 @@
 #include <string>
 #include <sstream>
 
-ros::Publisher robot_state_pub;
+ros::Publisher robot_state_pub, last_target_pub;  
 ros::Publisher cmd_vel_pub;  // publisher to stop the robot
+ros::Subscriber odom_sub;  // subscriber to get the robot's position and velocity
 std::atomic<bool> cancel_goal(false);  // flag to cancel goal
 
 my_assignment2::PositionVelocity robot_state;
 
+// callback function to get the robot's position and velocity
 void odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
-    robot_state.x = msg->pose.pose.position.x;
+    robot_state.x = msg->pose.pose.position.x; // Get the robot's position and velocity
     robot_state.y = msg->pose.pose.position.y;
-    robot_state.vel_x = msg->twist.twist.linear.x;
+    robot_state.vel_x = msg->twist.twist.linear.x; // Get the robot's velocity
     robot_state.vel_z = msg->twist.twist.angular.z;
 
     // Publish the robot status
@@ -27,7 +29,7 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
 
 // function to stop robot
 void stopRobot() {
-    geometry_msgs::Twist stop_msg;
+    geometry_msgs::Twist stop_msg; // Create a message to stop the robot
     stop_msg.linear.x = 0.0;
     stop_msg.angular.z = 0.0;
     cmd_vel_pub.publish(stop_msg);
@@ -39,8 +41,10 @@ void userInputThread(actionlib::SimpleActionClient<assignment_2_2024::PlanningAc
     while (ros::ok()) {
         std::string input;
         ROS_INFO("Enter target coordinates (x y) or type 'cancel' to cancel the goal:");
+        // Get user input from the console
         std::getline(std::cin, input);
 
+        // If the user types 'cancel', cancel the current goal
         if (input == "cancel") {
             auto state = ac.getState();
             if (state == actionlib::SimpleClientGoalState::ACTIVE || 
@@ -52,6 +56,7 @@ void userInputThread(actionlib::SimpleActionClient<assignment_2_2024::PlanningAc
                 ROS_WARN("No active goal to cancel.");
             }
         } else {
+            // If the user types two numbers, send a new goal
             std::istringstream iss(input);
             double target_x, target_y;
             if (!(iss >> target_x >> target_y)) {
@@ -59,6 +64,7 @@ void userInputThread(actionlib::SimpleActionClient<assignment_2_2024::PlanningAc
             } else {
                 ROS_INFO("Sending new goal: x=%.2f, y=%.2f", target_x, target_y);
                 assignment_2_2024::PlanningGoal goal;
+                last_target_pub.publish({target_x, target_y, 0.0});
                 goal.target_pose.pose.position.x = target_x;
                 goal.target_pose.pose.position.y = target_y;
                 ac.sendGoal(goal);  // send goal
@@ -70,14 +76,15 @@ void userInputThread(actionlib::SimpleActionClient<assignment_2_2024::PlanningAc
 
 int main (int argc, char **argv)
 {
+    // Initialize action client node
     ros::init(argc, argv, "action_client_node");
     ros::NodeHandle nh;
 
     // Initialize subscribers and publishers
     robot_state_pub = nh.advertise<my_assignment2::PositionVelocity>("/robot_state", 10);
-    ros::Subscriber odom_sub = nh.subscribe("/odom", 10, odomCallback);
+    last_target_pub = nh.advertise<geometry_msgs::Point>("/last_target", 10);
+    odom_sub = nh.subscribe("/odom", 10, odomCallback);
     cmd_vel_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 10);  // ロボットを停止させるためのトピック
-
     // Create the action client
     actionlib::SimpleActionClient<assignment_2_2024::PlanningAction> ac("reaching_goal", true);
 
