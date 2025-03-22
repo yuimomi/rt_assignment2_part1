@@ -1,0 +1,118 @@
+\hypertarget{target__service__node_8cpp}{}\doxysection{src/target\+\_\+service\+\_\+node.cpp File Reference}
+\label{target__service__node_8cpp}\index{src/target\_service\_node.cpp@{src/target\_service\_node.cpp}}
+
+
+Service client node for assignment 2.  
+
+
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include $<$std\+\_\+msgs/\+String.\+h$>$}\newline
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Point.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}my\+\_\+assignment2/\+Last\+Target.\+h\char`\"{}}\newline
+Include dependency graph for target\+\_\+service\+\_\+node.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{target__service__node_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{target__service__node_8cpp_a95af287ffc88624c54d918828621efaf}{target\+Callback}} (const geometry\+\_\+msgs\+::\+Point\+::\+Const\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Callback function for the \char`\"{}/last\+\_\+target\+\_\+topic\char`\"{} topic. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{target__service__node_8cpp_ac3c428b2b64b9ae847e2aec3a32028e0}{get\+Last\+Target}} (my\+\_\+assignment2\+::\+Last\+Target\+::\+Request \&req, my\+\_\+assignment2\+::\+Last\+Target\+::\+Response \&res)
+\begin{DoxyCompactList}\small\item\em Callback function for the service \char`\"{}get\+\_\+last\+\_\+target\char`\"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{target__service__node_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Main function for the target\+\_\+service\+\_\+node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{target__service__node_8cpp_abb66b33c1e9a8a118c99e73d77ed512c}\label{target__service__node_8cpp_abb66b33c1e9a8a118c99e73d77ed512c}} 
+double \mbox{\hyperlink{target__service__node_8cpp_abb66b33c1e9a8a118c99e73d77ed512c}{last\+\_\+x}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em x coordinate of the last target \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{target__service__node_8cpp_a58471f12beade2e129004d30fe0892c1}\label{target__service__node_8cpp_a58471f12beade2e129004d30fe0892c1}} 
+double \mbox{\hyperlink{target__service__node_8cpp_a58471f12beade2e129004d30fe0892c1}{last\+\_\+y}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em y coordinate of the last target \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service client node for assignment 2. 
+
+\begin{DoxyAuthor}{Author}
+Yui Momiyama 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+21/03/2025
+\end{DoxyDate}
+Subscribes to\+: ~\newline
+ ° /last\+\_\+target\+\_\+topic
+
+Services\+: ~\newline
+ ° get\+\_\+last\+\_\+target
+
+Description \+:
+
+This node is a service client that listens to the \char`\"{}/last\+\_\+target\+\_\+topic\char`\"{} topic and provides a service called \char`\"{}get\+\_\+last\+\_\+target\char`\"{} that returns the last target that was published to the topic. The service returns the x and y coordinates of the last target as a response. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{target__service__node_8cpp_ac3c428b2b64b9ae847e2aec3a32028e0}\label{target__service__node_8cpp_ac3c428b2b64b9ae847e2aec3a32028e0}} 
+\index{target\_service\_node.cpp@{target\_service\_node.cpp}!getLastTarget@{getLastTarget}}
+\index{getLastTarget@{getLastTarget}!target\_service\_node.cpp@{target\_service\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{getLastTarget()}{getLastTarget()}}
+{\footnotesize\ttfamily bool get\+Last\+Target (\begin{DoxyParamCaption}\item[{my\+\_\+assignment2\+::\+Last\+Target\+::\+Request \&}]{req,  }\item[{my\+\_\+assignment2\+::\+Last\+Target\+::\+Response \&}]{res }\end{DoxyParamCaption})}
+
+
+
+Callback function for the service \char`\"{}get\+\_\+last\+\_\+target\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & A pointer to the recieved my\+\_\+assignment2\+::\+Last\+Target\+::\+Request message. \\
+\hline
+{\em res} & A pointer to the recieved my\+\_\+assignment2\+::\+Last\+Target\+::\+Response message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+always true as this method cannot fail.
+\end{DoxyReturn}
+This function is a callback function that is called whenever the service is called. It returns the x and y coordinates of the last target as a response. \mbox{\Hypertarget{target__service__node_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{target__service__node_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{target\_service\_node.cpp@{target\_service\_node.cpp}!main@{main}}
+\index{main@{main}!target\_service\_node.cpp@{target\_service\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Main function for the target\+\_\+service\+\_\+node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command-\/line arguments. \\
+\hline
+{\em argv} & Array of command-\/line arguments.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the program exits successfully.
+\end{DoxyReturn}
+Initializes the service node and creates a service server. Then, it subscribes to the \char`\"{}/last\+\_\+target\+\_\+topic\char`\"{} topic. Finally, it keeps the node running until it is stopped. \mbox{\Hypertarget{target__service__node_8cpp_a95af287ffc88624c54d918828621efaf}\label{target__service__node_8cpp_a95af287ffc88624c54d918828621efaf}} 
+\index{target\_service\_node.cpp@{target\_service\_node.cpp}!targetCallback@{targetCallback}}
+\index{targetCallback@{targetCallback}!target\_service\_node.cpp@{target\_service\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{targetCallback()}{targetCallback()}}
+{\footnotesize\ttfamily void target\+Callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Point\+::\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})}
+
+
+
+Callback function for the \char`\"{}/last\+\_\+target\+\_\+topic\char`\"{} topic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & A pointer to the recieved geometry\+\_\+msgs\+::\+Point message.\\
+\hline
+\end{DoxyParams}
+This function is a callback function that is called whenever a message is published. It saves the x and y coordinates of the last target that was published to the topic. 

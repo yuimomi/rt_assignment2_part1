@@ -1,3 +1,27 @@
+/**
+ * \file action_client_node.cpp
+ * \brief Action client node for assignment 2
+ * \author Yui Momiyama
+ * \version 1.0
+ * \date 21/03/2025
+
+ * \details
+ *
+ * Subscribes to: <BR>
+ * ° /odom
+ *
+ * Publishes to: <BR>
+ * ° /robot_state
+ *  ° /last_target
+ * ° /cmd_vel
+ *
+ * Description :
+ *
+ * This node is an action client that sends goals to the action server to reach a target position.
+ * The user can input the target position from the console.
+ *
+ */
+
 #include <ros/ros.h>
 #include <actionlib/client/simple_action_client.h>
 #include <assignment_2_2024/PlanningAction.h>
@@ -15,6 +39,12 @@ std::atomic<bool> cancel_goal(false);  // flag to cancel goal
 
 my_assignment2::PositionVelocity robot_state;
 
+/**
+ * \brief Callback function for the /odom topic.
+ * \param msg A pointer to the recieved odometry
+ *
+ * This function is a callback function that is called when the robot's position and velocity is received.
+ */
 void odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
     robot_state.x = msg->pose.pose.position.x;
     robot_state.y = msg->pose.pose.position.y;
@@ -25,7 +55,11 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
     robot_state_pub.publish(robot_state);
 }
 
-// function to stop robot
+/**
+ * \brief Function to stop the robot.
+ *
+ * This function stops the robot by publishing a message with zero linear and angular velocity.
+ */
 void stopRobot() {
     geometry_msgs::Twist stop_msg;
     stop_msg.linear.x = 0.0;
@@ -34,7 +68,14 @@ void stopRobot() {
     ROS_INFO("Robot stopped.");
 }
 
-// thread function to process user input
+/**
+ * \brief Thread function to process user input from the console.
+ * \param ac A pointer to the action client
+ * 
+ * This function manages user input from the console. 
+ * The user can enter target coordinates to send a new goal or cancel the current goal.
+ */
+
 void userInputThread(actionlib::SimpleActionClient<assignment_2_2024::PlanningAction>& ac) {
     while (ros::ok()) {
         std::string input;
@@ -67,6 +108,19 @@ void userInputThread(actionlib::SimpleActionClient<assignment_2_2024::PlanningAc
         }
     }
 }
+
+ /**
+  * \brief Main function for the action_client_node.
+  * 
+  * \param argc Number of input arguments (if any)
+  * \param argv Pointer to array of input arguments (if any)
+  * 
+  * \return 0 if the program exits successfully
+  * 
+  * Initializes the action client node, subscribers, and publishers.
+  * and creates the action client.
+  * Then, it starts a thread to process user input and enters a loop to move the robot.
+  */
 
 int main (int argc, char **argv)
 {
