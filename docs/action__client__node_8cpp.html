@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>assignment_1: src/action_client_node.cpp File Reference</title>
+<title>My Project: action_client_node.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,10 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">assignment_1
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">My Project
    </div>
-   <div id="projectbrief">assignment 1 of RT2</div>
   </td>
  </tr>
  </tbody>
@@ -61,10 +59,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -90,9 +84,9 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for action_client_node.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="action__client__node_8cpp__incl.png" border="0" usemap="#src_2action__client__node_8cpp" alt=""/></div>
-<map name="src_2action__client__node_8cpp" id="src_2action__client__node_8cpp">
-<area shape="rect" title="Action client node for assignment 2." alt="" coords="835,5,1030,32"/>
+<div class="center"><img src="action__client__node_8cpp__incl.png" border="0" usemap="#action__client__node_8cpp" alt=""/></div>
+<map name="action__client__node_8cpp" id="action__client__node_8cpp">
+<area shape="rect" title="Action client node for assignment 2." alt="" coords="847,5,1018,32"/>
 <area shape="rect" title=" " alt="" coords="5,87,84,114"/>
 <area shape="rect" title=" " alt="" coords="108,80,275,121"/>
 <area shape="rect" title=" " alt="" coords="299,80,511,121"/>
@@ -129,15 +123,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a0cfea752b0c4dbee3b5d7ae08d0db635"><td class="memItemLeft" align="right" valign="top"><a id="a0cfea752b0c4dbee3b5d7ae08d0db635"></a>
 ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><b>robot_state_pub</b></td></tr>
 <tr class="separator:a0cfea752b0c4dbee3b5d7ae08d0db635"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3606284851f6e2459a3719e9b2dbda29"><td class="memItemLeft" align="right" valign="top"><a id="a3606284851f6e2459a3719e9b2dbda29"></a>
-ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><b>last_target_pub</b></td></tr>
-<tr class="separator:a3606284851f6e2459a3719e9b2dbda29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac66da0a97da3b4feda4dc2dc8bdc2631"><td class="memItemLeft" align="right" valign="top"><a id="ac66da0a97da3b4feda4dc2dc8bdc2631"></a>
 ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><b>cmd_vel_pub</b></td></tr>
 <tr class="separator:ac66da0a97da3b4feda4dc2dc8bdc2631"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a586725e682dfdf0360b26220a8f2ed"><td class="memItemLeft" align="right" valign="top"><a id="a9a586725e682dfdf0360b26220a8f2ed"></a>
-ros::Subscriber&#160;</td><td class="memItemRight" valign="bottom"><b>odom_sub</b></td></tr>
-<tr class="separator:a9a586725e682dfdf0360b26220a8f2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a562d3fa715f2c68e13455e43201573c0"><td class="memItemLeft" align="right" valign="top"><a id="a562d3fa715f2c68e13455e43201573c0"></a>
 my_assignment2::PositionVelocity&#160;</td><td class="memItemRight" valign="bottom"><b>robot_state</b></td></tr>
 <tr class="separator:a562d3fa715f2c68e13455e43201573c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,7 +133,7 @@ my_assignment2::PositionVelocity&#160;</td><td class="memItemRight" valign="bott
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Action client node for assignment 2. </p>
 <dl class="section author"><dt>Author</dt><dd>Yui Momiyama </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>21/03/2025</dd></dl>
 <p>Subscribes to: <br  />
  ° /odom</p>
@@ -183,12 +171,12 @@ my_assignment2::PositionVelocity&#160;</td><td class="memItemRight" valign="bott
 <p>Main function for the action_client_node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td>Number of command-line arguments. </td></tr>
-    <tr><td class="paramname">argv</td><td>Array of command-line arguments.</td></tr>
+    <tr><td class="paramname">argc</td><td>Number of input arguments (if any) </td></tr>
+    <tr><td class="paramname">argv</td><td>Pointer to array of input arguments (if any)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if the program exits successfully.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if the program exits successfully</dd></dl>
 <p>Initializes the action client node, subscribers, and publishers. and creates the action client. Then, it starts a thread to process user input and enters a loop to move the robot. </p>
 
 </div>
@@ -212,11 +200,11 @@ my_assignment2::PositionVelocity&#160;</td><td class="memItemRight" valign="bott
 <p>Callback function for the /odom topic. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>A pointer to the recieved odometry.</td></tr>
+    <tr><td class="paramname">msg</td><td>A pointer to the recieved odometry</td></tr>
   </table>
   </dd>
 </dl>
-<p>Description : This function is a callback function that is called when the robot's position and velocity is received. </p>
+<p>This function is a callback function that is called when the robot's position and velocity is received. </p>
 
 </div>
 </div>

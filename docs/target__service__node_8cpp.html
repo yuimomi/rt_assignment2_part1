@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>assignment_1: src/target_service_node.cpp File Reference</title>
+<title>My Project: target_service_node.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,10 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">assignment_1
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">My Project
    </div>
-   <div id="projectbrief">assignment 1 of RT2</div>
   </td>
  </tr>
  </tbody>
@@ -61,10 +59,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -84,13 +78,13 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for target_service_node.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="target__service__node_8cpp__incl.png" border="0" usemap="#src_2target__service__node_8cpp" alt=""/></div>
-<map name="src_2target__service__node_8cpp" id="src_2target__service__node_8cpp">
-<area shape="rect" title="Service client node for assignment 2." alt="" coords="199,5,338,47"/>
-<area shape="rect" title=" " alt="" coords="5,95,84,121"/>
-<area shape="rect" title=" " alt="" coords="109,95,247,121"/>
-<area shape="rect" title=" " alt="" coords="271,95,447,121"/>
-<area shape="rect" title=" " alt="" coords="472,95,689,121"/>
+<div class="center"><img src="target__service__node_8cpp__incl.png" border="0" usemap="#target__service__node_8cpp" alt=""/></div>
+<map name="target__service__node_8cpp" id="target__service__node_8cpp">
+<area shape="rect" title="Service client node for assignment 2." alt="" coords="178,5,359,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,84,107"/>
+<area shape="rect" title=" " alt="" coords="109,80,247,107"/>
+<area shape="rect" title=" " alt="" coords="271,80,447,107"/>
+<area shape="rect" title=" " alt="" coords="472,80,689,107"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -120,12 +114,12 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ta
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Service client node for assignment 2. </p>
 <dl class="section author"><dt>Author</dt><dd>Yui Momiyama </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>21/03/2025</dd></dl>
 <p>Subscribes to: <br  />
- ° /last_target_topic</p>
+ /last_target_topic</p>
 <p>Services: <br  />
- ° get_last_target</p>
+ get_last_target</p>
 <p>Description :</p>
 <p>This node is a service client that listens to the "/last_target_topic" topic and provides a service called "get_last_target" that returns the last target that was published to the topic. The service returns the x and y coordinates of the last target as a response. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -158,12 +152,12 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ta
 <p>Callback function for the service "get_last_target". </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">req</td><td>A pointer to the recieved my_assignment2::LastTarget::Request message. </td></tr>
-    <tr><td class="paramname">res</td><td>A pointer to the recieved my_assignment2::LastTarget::Response message.</td></tr>
+    <tr><td class="paramname">req</td><td>A pointer to the recieved my_assignment2::LastTarget::Request message </td></tr>
+    <tr><td class="paramname">res</td><td>A pointer to the recieved my_assignment2::LastTarget::Response message</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>always true as this method cannot fail.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>always true as this method cannot fail</dd></dl>
 <p>This function is a callback function that is called whenever the service is called. It returns the x and y coordinates of the last target as a response. </p>
 
 </div>
@@ -197,12 +191,12 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ta
 <p>Main function for the target_service_node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td>Number of command-line arguments. </td></tr>
-    <tr><td class="paramname">argv</td><td>Array of command-line arguments.</td></tr>
+    <tr><td class="paramname">argc</td><td>Number of input arguments (if any) </td></tr>
+    <tr><td class="paramname">argv</td><td>Pointer to array of input arguments (if any)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if the program exits successfully.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if the program exits successfully</dd></dl>
 <p>Initializes the service node and creates a service server. Then, it subscribes to the "/last_target_topic" topic. Finally, it keeps the node running until it is stopped. </p>
 
 </div>
@@ -226,7 +220,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ta
 <p>Callback function for the "/last_target_topic" topic. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>A pointer to the recieved geometry_msgs::Point message.</td></tr>
+    <tr><td class="paramname">msg</td><td>A pointer to the recieved geometry_msgs::Point message</td></tr>
   </table>
   </dd>
 </dl>

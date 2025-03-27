@@ -1,5 +1,5 @@
-<map id="src/action_client_node.cpp" name="src/action_client_node.cpp">
-<area shape="rect" id="node1" title="Action client node for assignment 2." alt="" coords="835,5,1030,32"/>
+<map id="action_client_node.cpp" name="action_client_node.cpp">
+<area shape="rect" id="node1" title="Action client node for assignment 2." alt="" coords="847,5,1018,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,87,84,114"/>
 <area shape="rect" id="node3" title=" " alt="" coords="108,80,275,121"/>
 <area shape="rect" id="node4" title=" " alt="" coords="299,80,511,121"/>

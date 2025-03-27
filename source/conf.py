@@ -8,6 +8,8 @@ import subprocess
 import sys
 sys.path.insert(0, os.path.abspath('../'))
 
+# Each time I build the documentation, I want to run Doxygen to generate the XML files.
+# I just retrieve it from Sphinx.
 subprocess.call('doxygen Doxyfile.in', shell=True)
 show_authors = True
 
@@ -65,8 +67,10 @@ intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
 todo_include_todos = True
 
-# -- Options for breathe
 
+# -- Options for breathe (For C++ documentation) -----------------------------
+
+# Generate the XML files with Doxygen
 breathe_projects = {
 "turtlebot_controller": "../build/xml/"
 }
